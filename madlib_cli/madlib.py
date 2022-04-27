@@ -7,6 +7,6 @@ def read_template(path):
 def parse_template(path):
   pass
 
-def merge_parts():
+def merge():
   pass
 

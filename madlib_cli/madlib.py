@@ -1,12 +1,23 @@
-path = 'assets/dark_and_stormy_night_template.txt'
+import re
+
 def read_template(path):
-  with open(path, 'r') as f:
-    text = f.read()
-    return text
+    try:
+        with open(path, 'r') as f:
+            template = f.read()
+        return template
+    except Exception:
+        raise FileNotFoundError
 
-def parse_template(path):
-  pass
+def parse_template(template):
+    parts = re.findall(r'\{(.*?)\}', template)
+    stripped = re.sub(r'\{(.*?)\}', '{}' , template)
+    print(parts)
+    print(stripped)
+    return stripped, tuple(parts)
 
-def merge():
-  pass
+def merge(str, args):
+    merged = str.format(*args)
+    print(merged)
+    return merged
+
 
